@@ -1,0 +1,25 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content"
+
+import Page from "./layouts/page.astro"
+import Changelog from "./components/changelog.astro";
+
+export const getStaticPaths = async () => {
+  const changelogList = (await getCollection("changelogs"));
+  return changelogList.map((changelog) => ({ params: { slug: changelog.slug }, props: { changelog }}));
+};
+
+type Props = {
+  changelog: CollectionEntry<"changelogs">
+}
+
+const { changelog } = Astro.props;
+const { Content } = await changelog.render()
+---
+
+<Page title={changelog.data.title} ogImage={changelog.data.cover}>
+  <Changelog changelog={{ ...changelog.data, slug: changelog.slug }} goBack>
+    <Content />
+  </Changelog>
+</Page>
+

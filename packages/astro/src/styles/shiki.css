@@ -1,0 +1,14 @@
+/* https://vscodethemes.com/e/jdinhlife.gruvbox/gruvbox-dark-soft?language=javascript */
+:root {
+  --astro-code-color-text: #ebdbb2;
+  --astro-code-color-background: #32302f;
+  --astro-code-token-constant: #82a497;
+  --astro-code-token-string: #b0b325;
+  --astro-code-token-comment: #928374;
+  --astro-code-token-keyword: #f27b19;
+  --astro-code-token-parameter: #423e3b;
+  --astro-code-token-function: #fabd2f;
+  --astro-code-token-string-expression: #9fa227;
+  --astro-code-token-punctuation: #a89984;
+  --astro-code-token-link: #423e3b;
+}

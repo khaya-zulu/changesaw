@@ -1,0 +1,20 @@
+{
+  "name": "@changesaw/astro",
+  "main": "src/index.ts",
+  "version": "0.0.0",
+  "peerDependencies": {
+    "astro": "^3.2.0"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "astro": "3.3.2"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./index.astro": "./src/index.astro",
+    "./[...slug].astro": "./src/[...slug].astro",
+    "./latest.json.ts": "./src/latest.json.ts",
+    "./schema": "./src/schema.ts"
+  }
+}

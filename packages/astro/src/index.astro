@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content"
+
+import Page from './layouts/page.astro';
+import Changelog from "./components/changelog.astro";
+
+import { userConfig } from "virtual:changesaw/user-config"
+
+import { sortChangelogsByDate } from "./utils"
+
+const changelogList = await getCollection("changelogs")
+const sortedList = sortChangelogsByDate(changelogList)
+---
+
+<Page title={userConfig.title}>
+	{
+		sortedList?.map(async (changelog) => {
+			const { Content } = await changelog.render()
+			return <Changelog changelog={{ ...changelog.data, slug: changelog.slug }}>
+				<Content />
+			</Changelog>
+		})
+	}
+</Page>

@@ -1,0 +1,120 @@
+---
+import { userConfig } from "virtual:changesaw/user-config"
+
+import "../styles/index.css"
+import "../styles/utils.css"
+import "../styles/shiki.css"
+
+import "virtual:changesaw/style-overrides"
+
+import SocialIcon from "../components/social-icon.astro"
+
+interface Props {
+	title: string;
+	ogImage?: string;
+}
+
+const { title, ogImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		{
+			userConfig.description ? <>
+				<meta property="og:description" content={userConfig.description}  />
+				<meta property="twitter:description" content={userConfig.description} />
+			</> : null
+		}
+		{
+			userConfig.meta?.ogImage ? <>
+				<meta property="og:image" content={ogImage ?? userConfig.meta.ogImage} />
+				<meta property="twitter:image" content={ogImage ?? userConfig.meta.ogImage} />
+			</> : null
+		}
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={userConfig.title} />
+		<meta name="og:title" content={userConfig.title} />
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<main>
+			<div class="navbar-container backdrop-blur-md" style="border-bottom-width: 1px;">
+				<div class="container ch-padding ch-flex ch-gap" style="justify-content: space-between;">
+					<div class="ch-flex ch-gap">
+						{
+							userConfig.logoPath ? (
+								<div>
+									<img class="ch-border" style="height: 3rem; width: 3rem; border-radius: 9999px" src={userConfig.logoPath} />
+								</div>
+							) : null
+						}
+						<div>
+							<p class="text-base">{userConfig.title}</p>
+							<a 
+								href={userConfig.meta?.domain} 
+								target="_blank" 
+								rel="noopener noreferrer" 
+								class="ch-text-secondary ch-text-sm hover-underline ch-truncate"
+							>
+								{userConfig.meta?.domainTitle ?? userConfig.meta?.domain}
+							</a>
+						</div>
+					</div>
+	
+					<div class="ch-flex ch-gap social">
+						{
+							Object.entries(userConfig.socials ?? {}).map(([key, value]) => (
+								<a href={value} target="_blank" rel="noopener noreferrer">
+									<SocialIcon type={key} />
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</div>
+			<div class="container ch-padding ch-space-y-lg" style="margin-top: 2rem; margin-bottom: 2rem;">
+				<slot />
+			</div>
+		</main>
+	</body>
+</html>
+
+<style>
+	.hover-underline:hover {
+		text-decoration: underline;
+	}
+
+	.social > a {
+		width: 1.25rem;
+		transition-property: color;
+		transition-duration: 200ms;
+	}
+
+	.social > a:hover {
+		color: var(--ch-primary-color);
+	}
+	
+	.container {
+		max-width: 40rem;
+		margin: 0 auto;
+	}
+
+	.navbar-container {
+		border-bottom-width: 1px;
+		position: sticky;
+		z-index: 50;
+		top: 0px;
+		background-color: var(--ch-navbar-bg-color);
+	}
+
+	.backdrop-blur-md {
+		backdrop-filter: blur(24px) 
+	}
+</style>
