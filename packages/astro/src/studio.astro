@@ -1,0 +1,77 @@
+---
+import Page from "./layouts/page.astro"
+
+import TrayIcon from "./icons/tray.astro"
+
+import Input from "./components/input.astro"
+import Editor from "./components/editor.astro";
+import File from "./components/file.astro"
+
+import { GET } from "./endpoints/__public-dir.json"
+
+console.log("data", GET({}))
+---
+
+<Page containerSize="lg" title="Studio">
+  <div class="ch-flex ch-gap-lg" style="align-items: start">
+    <div style="flex: 1;" class="ch-space-y">
+      <Input label="Title" name="title" placeholder="Updates to UI" />
+      <Input label="Tag" name="tag" placeholder="CLI" />
+
+      <div 
+        class="ch-padding ch-border-secondary ch-border-radius ch-flex" 
+        style="border-style: dashed; height: 12rem; border-color: var(--ch-code-border-color); background-color: var(--ch-dashed-bg-color);"
+      >
+        <div style="text-align: center; flex: 1">
+          <div class="ch-text-secondary" style="margin: auto; display: inline-block;">
+            <TrayIcon />
+          </div>
+          <div>Upload cover</div>
+        </div>
+      </div>
+
+      <Input label="Published At" name="publishedAt" type="date" />
+
+      <div>
+        <div>Published By</div>
+      </div>
+    </div>
+    <div class="ch-space-y ch-padding" style="width: 40rem; padding-top: 0;">
+      <Editor />
+    </div>
+    <div class="ch-space-y" style="flex: 1;">
+      <div class="ch-border-secondary ch-padding-sm ch-flex ch-border-radius">
+        <button
+          class="ch-padding-sm ch-border-radius" 
+          style="flex: 1; background-color: var(--ch-dashed-bg-color);"
+        >
+          Markdown
+        </button>
+        <button 
+          class="ch-padding-sm ch-border-radius" 
+          style="flex: 1;"
+        >
+          Preview
+        </button>
+      </div>
+
+      <div class="ch-space-y ch-text-secondary ch-padding ch-border-secondary ch-border-radius">
+        <File name="avatar.webp" />
+        <File name="favicon.svg" />
+        <File name="chainsaw.png" />
+
+        <div>
+          <hr style="margin: 0 auto 0.8rem; width: 80%;">
+          <span><b style="padding-right: 1.7rem; opacity: .6;" class="ch-text-secondary">/</b>public</span>
+        </div>
+      </div>
+
+      <button 
+        class="ch-border-radius ch-padding-md" 
+        style="background-color: var(--ch-primary-color); width: 100%; color: var(--ch-primary-bg-text-color);"
+      >
+        Publish
+      </button>
+    </div>
+  </div>
+</Page>

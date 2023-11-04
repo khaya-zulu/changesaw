@@ -1,5 +1,10 @@
 :root {
   --ch-primary-color: #d95204;
+  --ch-primary-bg-text-color: #fff;
+  --ch-primary-highlight: #ffeddd50;
+
+  --ch-secondary-color: #475569;
+  --ch-secondary-light-color: #eaf3ff;
 
   --ch-navbar-bg-color: #f0f0f0ed;
 
@@ -7,6 +12,8 @@
   --ch-secondary-text-color: #475569;
 
   --ch-border-secondary-color: #e0e4e7;
+  --ch-dashed-border-color: #b9c0c5;
+  --ch-dashed-bg-color: #f1f5f9;
 
   --ch-text-2xl: 1.5rem;
 

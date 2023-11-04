@@ -9,7 +9,7 @@ type Props = {
     goBack?: boolean
 }
 
-const { changelog, goBack } = Astro.props
+const { changelog, goBack } =  Astro.props
 const authors = await getEntries(changelog.authors) as Array<{ data: Author }>
 
 const date = new Date(changelog.date ?? new Date())
@@ -154,7 +154,7 @@ const Tag = goBack ? "a" : Fragment
 
     .cover {
         overflow: hidden;
-        border-radius: 0.375rem;
+        border-radius: 0.25rem;
         margin-bottom: 1.5rem;
     }
 

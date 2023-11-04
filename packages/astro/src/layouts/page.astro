@@ -12,9 +12,10 @@ import SocialIcon from "../components/social-icon.astro"
 interface Props {
 	title: string;
 	ogImage?: string;
+	containerSize?: "base" | "lg"
 }
 
-const { title, ogImage } = Astro.props;
+const { title, ogImage, containerSize = "base" } = Astro.props;
 ---
 
 <!doctype html>
@@ -79,7 +80,10 @@ const { title, ogImage } = Astro.props;
 					</div>
 				</div>
 			</div>
-			<div class="container ch-padding ch-space-y-lg" style="margin-top: 2rem; margin-bottom: 2rem;">
+			<div 
+				class:list={["ch-padding ch-space-y-lg", containerSize === "base" ? "container" : "container-lg"]}
+			 	style="margin-top: 2rem; margin-bottom: 2rem;"
+			>
 				<slot />
 			</div>
 		</main>
@@ -103,6 +107,11 @@ const { title, ogImage } = Astro.props;
 	
 	.container {
 		max-width: 40rem;
+		margin: 0 auto;
+	}
+
+	.container-lg {
+		max-width: 80rem;
 		margin: 0 auto;
 	}
 

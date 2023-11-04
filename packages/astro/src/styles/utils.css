@@ -8,8 +8,20 @@
   gap: 1rem;
 }
 
+.ch-gap-lg {
+  gap: 2rem;
+}
+
 .ch-padding {
   padding: 1rem;
+}
+
+.ch-padding-md {
+  padding: 0.5rem;
+}
+
+.ch-padding-sm {
+  padding: 0.25rem;
 }
 
 .ch-space-y-lg > :not([hidden]) ~ :not([hidden]) {
@@ -63,4 +75,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.ch-border-radius {
+  border-radius: 0.25rem;
 }

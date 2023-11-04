@@ -1,0 +1,49 @@
+<script>
+    import { basicSetup, EditorView } from "codemirror"
+    import { markdown } from "@codemirror/lang-markdown"
+
+    // Hide the existing textarea
+    let textarea = document.getElementById("cm-editor") as HTMLTextAreaElement;
+
+    if (textarea) {
+        textarea.style.display = "none";
+
+        const theme = EditorView.theme({
+            ".cm-activeLine": {
+                backgroundColor: "var(--ch-primary-highlight)"
+            },
+            ".cm-gutters": {
+                backgroundColor: "#fff",
+                border: "none"
+            },
+            ".cm-activeLineGutter": {
+                backgroundColor: "#fff",
+                color: "#d95204"
+                // backgoundColor: "var(--ch-primary-color)"
+            },
+        });
+
+        let view = new EditorView({
+            // create instance with current value of textarea
+            doc: textarea.value,
+            extensions: [
+                basicSetup,
+                markdown({}),
+                theme
+            ],
+        });
+        // Insert the editor into the document
+        textarea.insertAdjacentElement("afterend", view.dom);
+
+        if (textarea.parentElement) {
+            textarea.parentElement.onsubmit = function() {
+                if (!textarea) return
+                textarea.value = view.state.doc.toString();
+            }
+        }
+    }
+</script>
+
+<div class="ch-border-secondary ch-border-radius" style="height: 80vh; overflow-y: auto;">
+    <textarea id="cm-editor" />
+</div>

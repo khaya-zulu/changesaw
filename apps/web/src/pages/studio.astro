@@ -1,0 +1,35 @@
+---
+
+---
+
+<script>
+    import { basicSetup, EditorView } from "codemirror"
+    import { markdown } from "@codemirror/lang-markdown"
+
+    // Hide the existing textarea
+    let textarea = document.querySelector('textarea');
+
+    if (textarea) {
+        textarea.style.display = "none";
+
+        let view = new EditorView({
+            // create instance with current value of textarea
+            doc: textarea.value,
+            extensions: [
+                basicSetup,
+                markdown({}),
+            ],
+        });
+        // Insert the editor into the document
+        textarea.insertAdjacentElement("afterend", view.dom);
+
+        if (textarea.parentElement) {
+            textarea.parentElement.onsubmit = function() {
+                if (!textarea) return
+                textarea.value = view.state.doc.toString();
+            }
+        }
+    }
+</script>
+
+<textarea id="cm-editor">hello world</textarea>

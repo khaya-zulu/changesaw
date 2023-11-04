@@ -6,6 +6,7 @@ import changesaw from "@changesaw/astro";
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
+  output: "server",
   integrations: [
     tailwind(),
     changesaw({
@@ -19,6 +20,9 @@ export default defineConfig({
       logoPath: "./logo.png",
       socials: {
         twitter: "https://twitter.com/khaya_was_taken",
+      },
+      studio: {
+        enabled: true,
       },
     }),
   ],

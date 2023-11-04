@@ -14,6 +14,7 @@ export const changesawConfigSchema = z.object({
   slugPath: z.string().optional(),
   logoPath: z.string().optional(),
   socials: socials.partial().optional(),
+  studio: z.object({ enabled: z.boolean() }).partial().optional(),
   meta: z
     .object({
       ogImage: z.string().url(),

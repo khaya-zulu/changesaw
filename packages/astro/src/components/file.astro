@@ -1,0 +1,50 @@
+---
+import ImageIcon from '../icons/image.astro'
+import ArrowRightIcon from "../icons/arrow-right.astro"
+
+export type Props = {
+    name: string;
+}
+
+const { name } = Astro.props
+---
+
+<div class="ch-flex file" style="justify-content: space-between; cursor: pointer; overflow-x: hidden;">
+    <div class="ch-flex ch-gap" >
+        <div class="file-icon">
+            <ImageIcon />
+        </div>
+        <div class="file-label">{name}</div>
+    </div>
+    <div class="file-arrow">
+        <ArrowRightIcon />
+    </div>
+</div>
+
+<style>
+    .file-icon, .file-label, .file-arrow {
+        transition-property: translate opacity;
+        transition-duration: 200ms;
+        transition-delay: 100ms;
+    }
+
+    .file-arrow {
+        opacity: 0;
+        /* transition-delay: 250ms; */
+        transition-duration: 200ms;
+        translate: 100%;
+    }
+
+    .file:hover .file-arrow {
+        opacity: 1;
+        translate: 0%;
+    }
+
+    .file:hover .file-label {
+        translate: -30px;
+    }
+    
+    .file:hover .file-icon {
+        translate: -100%;
+    }
+</style>

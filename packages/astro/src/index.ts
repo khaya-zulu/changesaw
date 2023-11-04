@@ -15,21 +15,47 @@ export default function changesawAstroPlugin(
   return {
     name: "@changesaw/astro",
     hooks: {
-      "astro:config:setup": ({ injectRoute, updateConfig, config }) => {
-        injectRoute({
-          pattern: "/changelog/latest.json",
-          entryPoint: "@changesaw/astro/latest.json.ts",
-        });
-
+      "astro:config:setup": ({
+        injectRoute,
+        updateConfig,
+        config,
+        command,
+      }) => {
+        // /
         injectRoute({
           pattern: parsedConfig.indexPath!,
           entryPoint: "@changesaw/astro/index.astro",
         });
 
+        // // /new-ui
+        // injectRoute({
+        //   pattern: parsedConfig.slugPath!,
+        //   entryPoint: "@changesaw/astro/[...slug].astro",
+        // });
+
+        // /changelog/latest.json - returns the latest changelog
         injectRoute({
-          pattern: parsedConfig.slugPath!,
-          entryPoint: "@changesaw/astro/[...slug].astro",
+          pattern: "/changelog/latest.json",
+          entryPoint: "@changesaw/astro/endpoints/latest.json.ts",
         });
+
+        if (parsedConfig.studio?.enabled && command === "dev") {
+          if (!["server", "hybrid"].includes(config.output)) {
+            throw new Error(
+              "Changesaw error: studio requires server/hybrid mode to be enabled."
+            );
+          }
+
+          injectRoute({
+            pattern: "/changelogs/studio/__public-dir.json",
+            entryPoint: "@changesaw/astro/endpoints/__public-dir.json.ts",
+          });
+
+          injectRoute({
+            pattern: "/changelogs/studio",
+            entryPoint: "@changesaw/astro/studio.astro",
+          });
+        }
 
         const userConfigVirtualModuleId = "virtual:changesaw/user-config";
         const styleOverridesVirtualModuleId =

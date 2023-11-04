@@ -2,7 +2,9 @@ import type { APIRoute } from "astro";
 
 import { getCollection } from "astro:content";
 
-import { sortChangelogsByDate } from "./utils";
+import { sortChangelogsByDate } from "../utils";
+
+export const prerender = true;
 
 export const GET: APIRoute = async () => {
   const changelogs = await getCollection("changelogs");

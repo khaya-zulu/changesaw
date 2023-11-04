@@ -3,7 +3,9 @@
   "main": "src/index.ts",
   "version": "0.0.0",
   "peerDependencies": {
-    "astro": "^3.2.0"
+    "astro": "^3.2.0",
+    "codemirror": "6.0.1",
+    "@codemirror/lang-markdown": "6.2.2"
   },
   "devDependencies": {
     "typescript": "latest",
@@ -14,7 +16,9 @@
     ".": "./src/index.ts",
     "./index.astro": "./src/index.astro",
     "./[...slug].astro": "./src/[...slug].astro",
-    "./latest.json.ts": "./src/latest.json.ts",
+    "./studio.astro": "./src/studio.astro",
+    "./endpoints/latest.json.ts": "./src/endpoints/latest.json.ts",
+    "./endpoints/__public-dir.json.ts": "./src/endpoints/__public-dir.json.ts",
     "./schema": "./src/schema.ts"
   }
 }
