@@ -6,11 +6,21 @@ import type { AstroUserConfig } from "astro/config";
 export default function changesawAstroPlugin(
   changesawConfig: ChangesawConfig
 ): AstroIntegration {
-  // todo: throw clean error.
-  const parsedConfig = changesawConfigSchema.parse({
-    ...{ indexPath: "/", slugPath: "/[...slug]" },
+  const parsedConfig = changesawConfigSchema.safeParse({
+    ...{ indexPath: "/", idPath: "/[id]" },
     ...changesawConfig,
   });
+
+  if (!parsedConfig.success) {
+    throw new Error(
+      "Changesaw integration config invalid:\n" +
+        parsedConfig.error.issues
+          .map((i) => `[${i.path}] ${i.message}`)
+          .join("\n")
+    );
+  }
+
+  const userConfig = parsedConfig.data;
 
   return {
     name: "@changesaw/astro",
@@ -21,15 +31,19 @@ export default function changesawAstroPlugin(
           entryPoint: "@changesaw/astro/latest.json.ts",
         });
 
-        injectRoute({
-          pattern: parsedConfig.indexPath!,
-          entryPoint: "@changesaw/astro/index.astro",
-        });
+        if (userConfig.indexPath) {
+          injectRoute({
+            pattern: userConfig.indexPath,
+            entryPoint: "@changesaw/astro/index.astro",
+          });
+        }
 
-        injectRoute({
-          pattern: parsedConfig.slugPath!,
-          entryPoint: "@changesaw/astro/[...slug].astro",
-        });
+        if (userConfig.idPath) {
+          injectRoute({
+            pattern: userConfig.idPath,
+            entryPoint: "@changesaw/astro/[id].astro",
+          });
+        }
 
         const userConfigVirtualModuleId = "virtual:changesaw/user-config";
         const styleOverridesVirtualModuleId =
@@ -60,7 +74,7 @@ export default function changesawAstroPlugin(
                     createResolvedVirtualModuleId(userConfigVirtualModuleId)
                   ) {
                     return `export const userConfig = ${JSON.stringify(
-                      parsedConfig
+                      userConfig
                     )}`;
                   }
 
@@ -71,7 +85,7 @@ export default function changesawAstroPlugin(
                     createResolvedVirtualModuleId(styleOverridesVirtualModuleId)
                   ) {
                     return (
-                      parsedConfig.meta?.customCSS
+                      userConfig.meta?.customCSS
                         ?.map((filePath) => `import "${filePath}";`)
                         .join("") ?? ""
                     );

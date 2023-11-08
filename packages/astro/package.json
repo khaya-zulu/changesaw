@@ -13,7 +13,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./index.astro": "./src/index.astro",
-    "./[...slug].astro": "./src/[...slug].astro",
+    "./[id].astro": "./src/[id].astro",
     "./latest.json.ts": "./src/latest.json.ts",
     "./schema": "./src/schema.ts"
   }

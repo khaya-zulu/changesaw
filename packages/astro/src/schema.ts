@@ -11,7 +11,7 @@ export const changesawConfigSchema = z.object({
   title: z.string(),
   description: z.string(),
   indexPath: z.string().optional(),
-  slugPath: z.string().optional(),
+  idPath: z.string().optional(),
   logoPath: z.string().optional(),
   socials: socials.partial().optional(),
   meta: z

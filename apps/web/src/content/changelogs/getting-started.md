@@ -35,4 +35,14 @@ export default defineConfig({
 });
 ```
 
-The following routes will be injected into your site:
+This is the structure of your routes once the integration has been added:
+
+```
+|-- ...
+|-- /src
+|   |-- /content
+|   |   |-- /authors/
+|   |   |-- /changelogs/
+|   |-- /index.astro
+|   |-- /[id].astro
+```

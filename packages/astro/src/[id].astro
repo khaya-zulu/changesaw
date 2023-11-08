@@ -6,7 +6,12 @@ import Changelog from "./components/changelog.astro";
 
 export const getStaticPaths = async () => {
   const changelogList = (await getCollection("changelogs"));
-  return changelogList.map((changelog) => ({ params: { slug: changelog.slug }, props: { changelog }}));
+  return changelogList.map((changelog) => (
+    {
+      params: { id: changelog.slug },
+      props: { changelog }
+    }
+  ));
 };
 
 type Props = {
