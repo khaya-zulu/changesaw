@@ -3,9 +3,6 @@ import type { AstroIntegration } from "astro";
 import { changesawConfigSchema, type ChangesawConfig } from "./schema";
 import type { AstroUserConfig } from "astro/config";
 
-// todo before: add styling for ``
-// todo before: fix hover animation on changelogs without cover
-// todo before: fix preview shadow
 export default function changesawAstroPlugin(
   changesawConfig: ChangesawConfig
 ): AstroIntegration {
