@@ -31,7 +31,7 @@
 }
 
 .ch-text-secondary {
-  color: var(--ch-secondary-text-color);
+  color: var(--ch-secondary-color);
 }
 
 .ch-text-primary {
@@ -63,4 +63,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.ch-relative {
+  position: relative;
+}
+
+.ch-absolute {
+  position: absolute;
 }

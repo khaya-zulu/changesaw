@@ -6,16 +6,16 @@ import ArrowBackIcon from "../icons/arrow-back.astro"
 
 type Props = {
     changelog: Changelog & { slug: string }
-    goBack?: boolean
+    preview?: boolean
 }
 
-const { changelog, goBack } = Astro.props
+const { changelog, preview } = Astro.props
 const authors = await getEntries(changelog.authors) as Array<{ data: Author }>
 
 const date = new Date(changelog.date ?? new Date())
 
-const NavLink = goBack ? "div" : "a"
-const Tag = goBack ? "a" : Fragment
+const NavLink = preview ? "a" : "div"
+const Tag = preview ? Fragment : "a"
 ---
 
 <script>
@@ -23,6 +23,7 @@ const Tag = goBack ? "a" : Fragment
 
     if (hrs.length > 0) {
         const onMouseEnter = () => {
+            console.log("entering...")
             hrs.forEach(hr => {
                 hr.classList.add('hr-focus-in')
                 hr.classList.remove('hr-focus-out')
@@ -30,6 +31,7 @@ const Tag = goBack ? "a" : Fragment
         }
 
         const onMouseLeave = () => {
+            console.log("not entering.")
             hrs.forEach(hr => {
                 hr.classList.add('hr-focus-out')
                 hr.classList.remove('hr-focus-in')
@@ -48,7 +50,7 @@ const Tag = goBack ? "a" : Fragment
     <div>
         <NavLink 
             href={changelog.slug} 
-            style="margin-bottom: 0.5rem"
+            style="margin-bottom: 0.5rem;"
             id="navlink"
         >
             <div class="ch-flex" style="justify-content: space-between; margin-bottom: 2rem;">
@@ -56,15 +58,15 @@ const Tag = goBack ? "a" : Fragment
                     <Tag href="/">
                         <div class="ch-flex tag">
                             {
-                                goBack ? <div style="margin-right: 0.5rem;">
+                                !preview ? <div style="margin-right: 0.5rem;">
                                     <ArrowBackIcon />
                                 </div> : null
                             }
                             <p>{changelog.tag}</p>
                         </div>
                     </Tag>
-                    <hr class:list={["hr-focus", goBack ? "force-focus" : "hr"]} style="border-width: 1px;" />
-                    <hr class:list={["hr-idle", !goBack && "hr"]} style="border-width: 1px;" />
+                    <hr class:list={["hr-focus", !preview ? "force-focus" : "hr"]} style="border-width: 1px;" />
+                    <hr class:list={["hr-idle", preview && "hr"]} style="border-width: 1px;" />
                 </div>
                 <p class="ch-text-secondary ch-font-semi-bold date">{changelog.date.getDate()}{' '}{["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dev"][date.getMonth() -1]}, {changelog.date.getFullYear()}</p>
             </div>
@@ -72,7 +74,7 @@ const Tag = goBack ? "a" : Fragment
                 changelog.cover ? <div class="cover">
                     <img 
                         src={changelog.cover.filePath} alt={changelog.cover.alt ?? changelog.title} 
-                        class:list={["ch-transition-transform", goBack ? "force-scale" : ""]} />
+                        class:list={["ch-transition-transform", !preview ? "force-scale" : ""]} />
                 </div> : null
             }
         </NavLink>
@@ -98,6 +100,13 @@ const Tag = goBack ? "a" : Fragment
 </div>
 
 <style is:global>
+    p code {
+        padding: 0.1rem 0.5rem;
+        border-radius: 0.25rem;
+        background-color: var(--ch-code-single-quote-color-bg);
+        border: 1px solid var(--ch-code-border-color);
+    }
+
     .content a {
         color: var(--ch-primary-color);
         opacity: 0.8;

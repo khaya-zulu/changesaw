@@ -35,7 +35,7 @@ export default defineConfig({
 });
 ```
 
-This is the structure of your routes once the integration has been added:
+The project structure with the injected routes from the integration:
 
 ```
 |-- ...

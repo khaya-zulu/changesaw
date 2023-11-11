@@ -15,6 +15,7 @@ Changesaw is an Astro plugin which allows you to create changelogs from your ast
 - Studio
 - Github action
 - Social sharing
+- Custom styling ✅
 - Code block styling ✅
 - Tailwind
 - Internationalization
@@ -25,4 +26,4 @@ Changesaw is an Astro plugin which allows you to create changelogs from your ast
 
 ### Acknowledge
 
-This plugin is inspired by the astro [starlight](https://starlight.astro.build/) plugin. I referenced the codebase to get idea of patterns and features for changesaw.
+Changesaw takes inspiration from the astro [starlight](https://starlight.astro.build/) plugin. I referenced the codebase for patterns and features for the plugin.

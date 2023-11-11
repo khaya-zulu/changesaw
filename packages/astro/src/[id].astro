@@ -23,7 +23,7 @@ const { Content } = await changelog.render()
 ---
 
 <Page title={changelog.data.title} ogImage={changelog.data.cover}>
-  <Changelog changelog={{ ...changelog.data, slug: changelog.slug }} goBack>
+  <Changelog changelog={{ ...changelog.data, slug: changelog.slug }}>
     <Content />
   </Changelog>
 </Page>

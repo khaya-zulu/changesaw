@@ -16,7 +16,7 @@ const sortedList = sortChangelogsByDate(changelogList)
 	{
 		sortedList?.map(async (changelog) => {
 			const { Content } = await changelog.render()
-			return <Changelog changelog={{ ...changelog.data, slug: changelog.slug }}>
+			return <Changelog changelog={{ ...changelog.data, slug: changelog.slug }} preview>
 				<Content />
 			</Changelog>
 		})

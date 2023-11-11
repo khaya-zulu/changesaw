@@ -72,7 +72,7 @@ const { title, ogImage } = Astro.props;
 						{
 							Object.entries(userConfig.socials ?? {}).map(([key, value]) => (
 								<a href={value} target="_blank" rel="noopener noreferrer">
-									<SocialIcon type={key} />
+									<SocialIcon type={key as any} />
 								</a>
 							))
 						}
@@ -111,7 +111,7 @@ const { title, ogImage } = Astro.props;
 		position: sticky;
 		z-index: 50;
 		top: 0px;
-		background-color: var(--ch-navbar-bg-color);
+		background-color: var(--ch-navbar-color-bg);
 	}
 
 	.backdrop-blur-md {

@@ -1,16 +1,17 @@
 :root {
   --ch-primary-color: #d95204;
+  --ch-secondary-color: #475569;
 
-  --ch-navbar-bg-color: #f0f0f0ed;
+  --ch-navbar-color-bg: #f0f0f0ed;
 
   --ch-border-color: #e0e4e7;
-  --ch-secondary-text-color: #475569;
-
   --ch-border-secondary-color: #e0e4e7;
 
   --ch-text-2xl: 1.5rem;
 
   /* code */
-  --ch-code-background-color: #f9f5d7;
+  --ch-code-bg-color: #f9f5d7;
   --ch-code-border-color: #618d62;
+  --ch-code-single-quote-color-bg: #f3f3f3;
+  --ch-code-border-color: #dcdcdc;
 }
