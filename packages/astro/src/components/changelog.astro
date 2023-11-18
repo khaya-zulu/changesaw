@@ -65,8 +65,12 @@ const Tag = preview ? Fragment : "a"
                             <p>{changelog.tag}</p>
                         </div>
                     </Tag>
-                    <hr class:list={["hr-focus", !preview ? "force-focus" : "hr"]} style="border-width: 1px;" />
-                    <hr class:list={["hr-idle", preview && "hr"]} style="border-width: 1px;" />
+                    {
+                        preview ? <>
+                            <hr class:list={["hr-focus", !preview ? "force-focus" : "hr"]} style="border-width: 1px;" />
+                            <hr class:list={["hr-idle", preview && "hr"]} style="border-width: 1px;" />
+                        </> : null
+                    }
                 </div>
                 <p class="ch-text-secondary ch-font-semi-bold date">{changelog.date.getDate()}{' '}{["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dev"][date.getMonth() -1]}, {changelog.date.getFullYear()}</p>
             </div>
