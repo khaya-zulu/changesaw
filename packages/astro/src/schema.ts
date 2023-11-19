@@ -16,9 +16,7 @@ export const changesawConfigSchema = z.object({
   socials: socials.partial().optional(),
   meta: z
     .object({
-      // todo: support relative paths, for now this value is inserted directly into
-      // the `meta` content attribute. Relative paths our not supported for OG.
-      ogImage: z.string().url(),
+      ogImage: z.string(),
       customCSS: z.array(z.string()),
       domain: z.string().url(),
       domainTitle: z.string(),
