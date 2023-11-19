@@ -35,7 +35,7 @@ export default defineConfig({
 });
 ```
 
-Once you have set up your collections in `src/content` (see example), your project struture (with the routes injected by the plugin) should look like this:
+Once you have set up your collections in `src/content` ([see example](https://github.com/khaya-zulu/changesaw/tree/main/apps/web/src/content)), your project struture (with the routes injected by the plugin) should look like this:
 
 ```
 |-- ...
