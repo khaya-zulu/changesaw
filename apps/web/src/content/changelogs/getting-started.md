@@ -26,7 +26,7 @@ export default defineConfig({
         domain: "https://changesaw.khayaos.com",
         domainTitle: "Astro Starlight, but for changelogs",
       },
-      logoPath: "./logo.png",
+      logoPath: "/logo.webp",
       socials: {
         twitter: "https://twitter.com/khaya_was_taken",
       },

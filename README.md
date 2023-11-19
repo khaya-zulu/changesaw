@@ -1,4 +1,4 @@
-<img src="./apps/web/public/logo.png" alt="changesaw logo" width="40px" height="40px" />
+<img src="./apps/web/public/logo.webp" alt="changesaw logo" width="40px" height="40px" />
 
 # Changesaw - The Astro plugin for changelogs
 
@@ -16,7 +16,7 @@ This plugin was created to explore [Astro's integrations API](https://docs.astro
 - [ ] Github action
 - [ ] Social sharing
 - [ ] Custom styling
-- [ ] Code block styling 
+- [ ] Code block styling
 - [ ] Tailwind
 - [ ] Internationalization
 - [ ] View transitions

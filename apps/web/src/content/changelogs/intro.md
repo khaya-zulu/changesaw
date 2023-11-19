@@ -2,7 +2,7 @@
 title: Changelogs for astro sites.
 date: 2023/11/28
 cover:
-  filePath: ./cover.png
+  filePath: /cover.webp
   alt: chainsaw
 authors: [khaya-zulu]
 tag: ["intro"]
@@ -21,6 +21,7 @@ Changesaw is an Astro plugin which allows you to create changelogs from your ast
 - Internationalization
 - View transitions
 - Dynamic OG images
+- Image loading
 
 ---
 
