@@ -11,14 +11,14 @@ export default defineConfig({
     changesaw({
       title: "Changesaw",
       description:
-        "Docusaurus for your changelogs. An astro plugin for creating and managing your changelogs with markdown.",
+        "Astro Starlight, but for changelogs. An astro plugin for creating and managing your changelogs with markdown.",
       meta: {
         domain: "https://changesaw.khayaos.com",
-        domainTitle: "Docusaurus for your changelog.",
+        domainTitle: "Astro Starlight, but for changelogs",
       },
       logoPath: "./logo.png",
       socials: {
-        twitter: "https://twitter.com/khaya_was_taken",
+        github: "https://github.com/khaya-zulu/changesaw",
       },
     }),
   ],

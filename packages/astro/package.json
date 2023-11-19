@@ -3,6 +3,23 @@
   "main": "src/index.ts",
   "version": "0.0.1",
   "license": "MIT",
+  "description": "Create changelogs from astro site collections",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khaya-zulu/changesaw.git"
+  },
+  "keywords": [
+    "changelog",
+    "astro"
+  ],
+  "author": "Khaya",
+  "bugs": {
+    "url": "https://github.com/khaya-zulu/changesaw/issues"
+  },
+  "homepage": "https://github.com/khaya-zulu/changesaw#readme",
   "peerDependencies": {
     "astro": "^3.2.0"
   },

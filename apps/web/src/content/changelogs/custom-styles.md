@@ -5,7 +5,7 @@ authors: [khaya-zulu]
 tag: ["intro"]
 ---
 
-Just like Astro's Starlight, Changesaw allows you to customize the styling your changelog pages. This can be done by defining a relative path in the integration's `meta.customCSS` field.
+Just like Astro's Starlight, Changesaw allows you to add your own custom styles to apply to your changelog's pages. Use the `meta.customCSS` field, in your config to define the paths you want added to your pages.
 
 ```css
 /* src/styles/custom-styles.css */
@@ -28,7 +28,7 @@ Just like Astro's Starlight, Changesaw allows you to customize the styling your 
 }
 ```
 
-You can also provide your own styles for the code elements. Astro comes with built-in support for [shiki](https://github.com/shikijs/shiki):
+You can also stylize your changelog's code elements. Astro comes with built-in support for [shiki](https://github.com/shikijs/shiki):
 
 ```css
 /* src/styles/custom-shiki.css */
@@ -48,7 +48,7 @@ You can also provide your own styles for the code elements. Astro comes with bui
 }
 ```
 
-Then you can add these paths to your changesaw config:
+Your custom styles can be added by listing their relative paths in your config:
 
 ```js
 export default defineConfig({

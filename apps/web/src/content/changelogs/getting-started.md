@@ -21,10 +21,10 @@ export default defineConfig({
     changesaw({
       title: "Changesaw",
       description:
-        "Docusaurus for your changelogs. An astro plugin for creating and managing your changelogs with markdown.",
+        "Astro Starlight, but for changelogs. An astro plugin for creating and managing your changelogs with markdown.",
       meta: {
         domain: "https://changesaw.khayaos.com",
-        domainTitle: "Docusaurus for your changelog.",
+        domainTitle: "Astro Starlight, but for changelogs",
       },
       logoPath: "./logo.png",
       socials: {
@@ -35,7 +35,7 @@ export default defineConfig({
 });
 ```
 
-The project structure with the injected routes from the integration:
+Once you have set up your collections in `src/content` (see example), your project struture (with the routes injected by the plugin) should look like this:
 
 ```
 |-- ...
@@ -45,4 +45,6 @@ The project structure with the injected routes from the integration:
 |   |   |-- /changelogs/
 |   |-- /index.astro
 |   |-- /[id].astro
+|   |-- /changelog
+|   |-- |-- /latest.json
 ```
