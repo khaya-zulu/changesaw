@@ -16,7 +16,7 @@ export const changesawConfigSchema = z.object({
   socials: socials.partial().optional(),
   meta: z
     .object({
-      ogImage: z.string().url(),
+      ogImage: z.string(),
       customCSS: z.array(z.string()),
       domain: z.string().url(),
       domainTitle: z.string(),
