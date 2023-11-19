@@ -15,7 +15,7 @@ export default defineConfig({
       meta: {
         domain: "https://changesaw.khayaos.com",
         domainTitle: "Astro Starlight, but for changelogs",
-        ogImage: "https://changesaw.upshot.dev/default.webp",
+        ogImage: "/cover.webp",
       },
       logoPath: "/logo.webp",
       socials: {
